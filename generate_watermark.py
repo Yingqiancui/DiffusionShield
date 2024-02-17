@@ -1,6 +1,8 @@
-// Portions of this file are derived from DiffJPEG by Marcela Lomnitz
-// GitHub: https://github.com/mlomnitz/DiffJPEG
-// Licensed under MIT License
+''' 
+Portions of this file are derived from DiffJPEG by Marcela Lomnitz
+GitHub: https://github.com/mlomnitz/DiffJPEG
+Licensed under MIT License
+'''
 
 import torch
 import torch.nn as nn
