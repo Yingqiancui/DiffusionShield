@@ -14,7 +14,7 @@ def process_images(block_width, image_size, dir_wmlist, dataset, save_dif, wm_pa
         transforms.ToTensor()])
 
     if dataset=='cifar10':
-        dataset = torchvision.datasets.CIFAR10('./cifar10_data', train=True, download=False)
+        dataset = torchvision.datasets.CIFAR10('./cifar10_data', train=True, download=True)
     else:
         dataset = torchvision.datasets.ImageFolder(root=dataset)
 
