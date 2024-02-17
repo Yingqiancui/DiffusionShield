@@ -1,0 +1,12 @@
+ CUDA_VISIBLE_DEVICES=2 python main.py \
+  --trainset 'cifar10_bird_train' \
+  --testset 'cifar10_bird_test'\
+  --image_size 32 \
+  --patch_size 4 \
+  --budget 8 \
+  --epsilon 0.8 \
+  --B 4 \
+  --epoch_num 40 \
+  --augment_type "denoise" \
+  --patches_save_path "./trained_patches/wm_patches_denoise.pt" \
+  --model_save_path "./trained_model/classifier_denoise.pt" 
