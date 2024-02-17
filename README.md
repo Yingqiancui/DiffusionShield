@@ -29,3 +29,7 @@ For detecting watermarks on images and calculating the bit accuracy, run:
 ```sh
 python test_acc.py
 ```
+### Acknowledgement
+
+This project incorporates DiffJPEG, developed by Marcela Lomnitz, to enable differentiable JPEG compression critical for enhancing the robustness of watermark patches and classifier.The software is accessible at [DiffJPEG's GitHub repository](https://github.com/mlomnitz/DiffJPEG) and is utilized in accordance with the MIT License.
+
