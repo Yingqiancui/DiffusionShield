@@ -53,6 +53,9 @@ def main():
     
     args = parser.parse_args()
     
+    if not os.path.exists(args.save_dif):
+        os.makedirs(args.save_dif)
+        
     process_images(args.block_width, args.image_size, args.dir_wmlist, args.dataset, args.save_dif, args.wmpatches_dir)
 
 if __name__ == "__main__":
