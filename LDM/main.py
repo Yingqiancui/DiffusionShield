@@ -19,8 +19,8 @@ def main():
     parser.add_argument('--epoch_num', default=40, type=int)
     parser.add_argument('--num_workers', default=4, type=int)
     parser.add_argument('--B', default=2, type=int, help='Transfer to B-nary sequence')
-    parser.add_argument('--trainset', default='/egr/research-dselab/cuiyingq/diffusers/examples/text_to_image/512_train2', type=str, help='cifar10_bird_train or specify directory to the training set')
-    parser.add_argument('--testset', default='/egr/research-dselab/cuiyingq/diffusers/examples/text_to_image/512_test2', type=str, help='cifar10_bird_train or specify directory to the test set')
+    parser.add_argument('--trainset', default='./train', type=str, help='cifar10_bird_train or specify directory to the training set')
+    parser.add_argument('--testset', default='./test', type=str, help='cifar10_bird_train or specify directory to the test set')
     parser.add_argument('--patches_save_path', default='./trained_patches/wm_patches.pt', type=str, help='specify the save path of the trained patches')
     parser.add_argument('--model_save_path', default='./trained_model/classifier.pt', type=str, help='specify the save path of the trained classifier')
 
