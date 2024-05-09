@@ -11,6 +11,7 @@ def main():
     parser.add_argument('--batch_size', default=5, type=int)
     parser.add_argument('--test_batch_size', default=1, type=int)
     parser.add_argument('--epsilon', default=0.01, type=float)
+    parser.add_argument('--budget', default=0.007, type=float)
     parser.add_argument('--lr_train', default=2e-3, type=float)
     parser.add_argument('--patch_size', default=16, type=int)
     parser.add_argument('--image_size', default=64, type=int)
@@ -41,7 +42,7 @@ def main():
     test_loader = torch.utils.data.DataLoader(testset, batch_size=args.test_batch_size, shuffle=True, num_workers=args.num_workers)
 
     # Initialize and run the defense mechanism
-    defense = generate_watermark(model, 'cuda', epsilon=args.epsilon, lr_train=args.lr_train, epoch_num=args.epoch_num,  patch_size=args.patch_size, \
+    defense = generate_watermark(model, 'cuda', epsilon=args.epsilon, lr_train=args.lr_train, epoch_num=args.epoch_num,  patch_size=args.patch_size, budget = args.budget, \
                                  image_size=args.image_size, augment_type=args.augment_type, B=args.B, patches_save_path=args.patches_save_path, model_save_path=args.model_save_path)
 
     defense.generate_wm(train_loader, test_loader)
