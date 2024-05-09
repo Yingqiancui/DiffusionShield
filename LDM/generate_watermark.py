@@ -94,7 +94,6 @@ class generate_watermark(Base):
                 n = random.randint(0,1)
                 randomlist.append(n)
             data2 = (data-0.5)*2
-            print(data.shape)
             latents = self.vae.encode(data2.to(torch.float32).to(self.device)).latent_dist.sample()
 
             for m in range(latents.shape[0]):  
@@ -128,7 +127,6 @@ class generate_watermark(Base):
             
             train_data = torch.concatenate(datalist, dim=0)
             train_target =torch.tensor(target_list).to(self.device)
-            print(train_data.shape)
             output = self.model(train_data)
             test_loss += F.cross_entropy(output, train_target, reduction='sum').item()  # sum up batch loss
             pred = output.argmax(dim = 1, keepdim = True)  # get the index of the max log-probability
