@@ -21,6 +21,7 @@ class generate_watermark(Base):
                 epsilon = 0.01, 
                 patch_size = 4,
                 image_size = 32,
+                budget = 0.007,
                 augment_type='None',
                 B=4,
                 patches_save_path='',
@@ -49,6 +50,7 @@ class generate_watermark(Base):
         self.vae = AutoencoderKL.from_pretrained("CompVis/stable-diffusion-v1-4", subfolder="vae", revision=None)
         self.vae.requires_grad_(False)
         self.vae.to('cuda', dtype=torch.float32)
+        self.budget = budget
 
     def gaussian_noise(self, x, severity):
         c = torch.tensor([0.04, 0.06, .08, .09, .10][severity - 1], device=self.device)
@@ -263,7 +265,7 @@ class generate_watermark(Base):
         opt = optim.SGD(wm_patches, lr=1e-3)
         opt.zero_grad()
       
-        loss = nn.CrossEntropyLoss()(self.model(train_data), train_target)+ 0.005*diff/16
+        loss = nn.CrossEntropyLoss()(self.model(train_data), train_target)+ self.budget*diff/16
         loss.backward()
             
         for m in range(len(wm_patches)):
